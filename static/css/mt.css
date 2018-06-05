@@ -1,0 +1,41 @@
+@import "global.css";
+
+.post-full-color {
+    margin: 0 -10vw -165px;
+    height: 200px;
+    background: var(--lightgrey);
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.term {
+    display: inline-block;
+    float: left;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background: var(--lightgrey);
+}
+.term-current {
+    background: var(--darkgrey);
+}
+.term-current a:visited {
+    color: yellow;
+}
+
+table.metadata {
+    align-self: left;
+    margin: 0px;
+    border-style: none;
+    border-width: 0px;
+}
+
+table.metadata td {
+    border-style: none;
+    padding-left: 0px;
+}
+
+table.metadata td.heading {
+    font-weight: bold;
+    text-align: left;
+}
