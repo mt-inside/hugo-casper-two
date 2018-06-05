@@ -1,6 +1,3 @@
-{{ $pages := ((where .Site.Pages "Type" "post") | shuffle) }}
-{{ range first 3 $pages}} 
-
 <article class="post-card post"> 
     {{if .Params.image}}
     <a class="post-card-image-link" href="{{ .Permalink }}">
@@ -15,11 +12,21 @@
     <div class="post-card-content">
       <a class="post-card-content-link" href="{{ .Permalink }}">
           <header class="post-card-header">
-              {{if .Params.tags }}<span class="post-card-tags">{{ range $index, $tag := .Params.tags }}
-              #{{$tag}} {{end}} </span>
-              {{ end }}
+              <span class="post-card-tags">
+                  {{ .Date.Format "2 January 2006" | safeHTML }}
+              </span>
+
               <h2 class="post-card-title">{{.Title}}</h2>
+
+              {{if .Params.tags }}
+              <span class="post-card-tags">
+                  {{ range $index, $tag := .Params.tags }}
+                  #{{$tag}}
+                  {{end}}
+              </span>
+              {{ end }}
           </header>
+
           <section class="post-card-excerpt">
               {{ if .Description }} 
                 <p>{{ .Description | markdownify }}</p>
@@ -30,9 +37,7 @@
       </a>
 
       <footer class="post-card-meta">
-          <img class="author-profile-image" src="{{ (.Params.authorAvatar | default .Site.Params.authorAvatar) | absURL}}" alt="Author" />
-          <span class="post-card-author"><a href="/">{{.Params.author | default .Site.Params.author}}</a></span>
+          <span>Reading time: ~{{ if le .ReadingTime 1 }}1 minute{{ else }}{{ .ReadingTime }} minutes{{ end }}</span>
       </footer>
     </div>
 </article>
-{{ end }}

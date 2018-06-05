@@ -23,7 +23,28 @@
 
     <section class="post-full-content">
         <div class="kg-card-markdown">
-        {{ .Content }}    
+            <table class="metadata">
+                <tr>
+                    <td class="heading">Speakers</td>
+                    <td class="value">{{.Params.speech.speakers}}</td>
+                </tr>
+                <tr>
+                    <td class="heading">Length</td>
+                    <td class="value">{{.Params.speech.length}}</td>
+                </tr>
+                <tr>
+                    <td class="heading">Event</td>
+                    <td class="value">{{.Params.speech.event}}</td>
+                </tr>
+                <tr>
+                    <td class="heading">Venue</td>
+                    <td class="value">{{.Params.speech.venue}}</td>
+                </tr>
+            </table>
+
+            <hr />
+
+            {{ .Content }}
         </div>
     </section>
 </article>

@@ -7,23 +7,19 @@
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     <div class="post-feed">
-      {{ $paginator := .Paginate .Data.Pages.ByDate.Reverse }}
-      {{ range $paginator.Pages }}
-        {{ if eq .Type "post" }}
-          {{ partial "post-item" . }}
-        {{ else if eq .Type "speech" }}
+    {{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "speech") }}
+    {{ range $paginator.Pages }}
           {{ partial "speech-item" . }}
-        {{ end }}
-      {{ end }}
+    {{ end }}
     </div>
 
     <nav class="pagination" role="navigation">
       {{if .Paginator.HasPrev}}
-          <a class="newer-posts" href="{{ .Paginator.Prev.URL }}">&larr; <span class="hide">Next Posts</span></a>
+          <a class="newer-speeches" href="{{ .Paginator.Prev.URL }}">&larr; <span class="hide">Next Speeches</span></a>
       {{end}}
       <span class="page-number"><span class="hide">Page {{ .Paginator.PageNumber }} of {{.Paginator.TotalPages}}</span>&nbsp;</span>
       {{if .Paginator.HasNext}}
-          <a class="older-posts" href="{{ .Paginator.Next.URL }}"><span class="hide">Previous Posts</span> &rarr;</a>
+          <a class="older-speeches" href="{{ .Paginator.Next.URL }}"><span class="hide">Previous Speeches</span> &rarr;</a>
       {{end}}
     </nav>
   </div>

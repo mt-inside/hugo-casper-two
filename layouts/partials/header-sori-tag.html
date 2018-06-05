@@ -1,5 +1,14 @@
+<!-- lists of items in an individual category, tag -->
+
 <header class="site-header outer">
   <div class="inner">
+    <div class="site-header-content">
+        <h1 class="site-title">{{.Title}}</h1>{{$.Scratch.Set "total" (len .Data.Pages)}}
+        <h2 class="site-description">
+                {{if ge ($.Scratch.Get "total") 2 }}A collection of {{$.Scratch.Get "total"}} posts
+                {{else}}{{$.Scratch.Get "total"}} post{{end}}
+        </h2>
+    </div>
     <nav class="site-nav">
       <div class="site-nav-left">{{ if .Site.Params.logo }}
         <a class="site-nav-logo" href="#"><img src="{{ .Site.Params.logo  | absURL}}" alt="{{ .Site.Params.Title }}" /></a>{{end}}
@@ -35,12 +44,5 @@
 
     </nav>  
 
-    <div class="site-header-content">
-        <h1 class="site-title">{{.Title}}</h1>{{$.Scratch.Set "total" (len .Data.Pages)}}
-        <h2 class="site-description">
-                {{if ge ($.Scratch.Get "total") 2 }}A collection of {{$.Scratch.Get "total"}} posts
-                {{else}}{{$.Scratch.Get "total"}} post{{end}}
-        </h2>
-    </div>
   </div>
 </header>
